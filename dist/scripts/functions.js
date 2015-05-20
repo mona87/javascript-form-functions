@@ -99,7 +99,7 @@ function nSum(n){
 	for(var i = 1; i< n; i++){
 
 		sum = i + sum;
-			console.log(i + ' ' + sum);
+			//console.log(i + ' ' + sum);
 	}
 	return sum
 }
@@ -119,25 +119,49 @@ function join (array, spacer){
 	return newString
 }
 
-function countLetters(string){
+function countLetters(inputString){
 
-	var newArray =[];
-	var count = 1;
+	var letterCount = {};
+	for(var i=0; i <inputString.length; i++){
+		var currentLetter = inputString.charAt(i);
+		if(!letterCount.hasOwnProperty(currentLetter)){
 
-	for(var i = 0; i <string.length; i++){
+			letterCount[currentLetter] = 1;
+		}else{
 
-		for(var j = i + 1; j< string.length; j++){
-
-			if(string[i] === string[j]){
-				console.log('true');
-				
-					count++;
-			}
+			letterCount[currentLetter]++;
 		}
-		newArray.push(string[i] + ': ' + count);
-				count = 0;
-	}console.log(newArray);
-		return newArray
+		console.log(letterCount);	
+
+		var outputArray= [];
+
+		for (var propertyName in letterCount){
+			var value = letterCount[propertyName];
+			console.log(propertyName, value );
+			//outputString = outputString + propertyName + ': '+ value + ',';
+			outputArray.push(' '+propertyName + ': '+ value );
+		}
+
+	}return outputArray;
+
+	// var newArray =[];
+	// var count = 1;
+
+	// for(var i = 0; i <string.length; i++){
+
+	// 	for(var j = i + 1; j< string.length; j++){
+
+	// 		if(string[i] === string[j]){
+	// 			console.log('true');
+				
+	// 				count++;
+	// 		}
+	// 	}
+	// 	newArray.push(string[i] + ': ' + count);
+	// 			count = 0;
+	// }console.log(newArray);
+	// 	return newArray
+		
 }
 
 function maze(){
@@ -153,72 +177,29 @@ function maze(){
 	return newArray
 }
 
-function table(year, make, model, color){
-
-	var obj1 = {
-		year: '2001',
-		make: 'Toyota',
-		model: 'Camry',
-		color: 'Grey'
-	}
-	var obj2 = {
-		year: '2002',
-		make: 'Toyota',
-		model: 'Camry',
-		color: 'Red'
-	}
-	var obj3 = {
-		year: '2003',
-		make: 'Toyota',
-		model: 'Corola',
-		color: 'Green'
-	}
-	var obj4 = {
-		year: '2004',
-		make: 'Toyota',
-		model: 'Camry',
-		color: 'Blue'
-	}
-	var obj5 = {
-		year: '2005',
-		make: 'Toyota',
-		model: 'Camry',
-		color: 'Black'
-	}
-	var obj6 = {
-		year: '2005',
-		make: 'Honda',
-		model: 'Accord',
-		color: 'Red'
-	}
-	var obj7 = {
-		year: '2003',
-		make: 'Honda',
-		model: 'Accord',
-		color: 'Red'
-	}
-	var obj8 = {
-		year: '2006',
-		make: 'Honda',
-		model: 'Accord',
-		color: 'Red'
-	}
-	var obj9= {
-		year: '2010',
-		make: 'Ford',
-		model: 'F150',
-		color: 'Blue'
-	}
-	var objArray= [obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9];
-	var newArray=[];
+function table(array, year, make, model, color){
 
 	
-	for(var i = 0; i< objArray.length; i++){
+	var newArray=[];
+	for(var i =0; i < array.length; i ++){
 
-		if (objArray[i].year === year){
+		if(array[i].year == year){
+			//console.log(year);
+			newArray.push(array[i]);
 
-			console.log(objArray[i]);
+		}else if (array[i].make == make){
+
+			newArray.push(array[i]);
+
+		}else if (array[i].model == model) {
+
+			newArray.push(array[i]);
+		}else if (array[i].color == color){
+
+			newArray.push(array[i]);
 		}
 	}
-	
+
+	console.log(newArray);
+	return  newArray;
 }
